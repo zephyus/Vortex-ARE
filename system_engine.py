@@ -32,11 +32,12 @@ class NeuralHub:
 
     def emit(self, topic, payload):
         with self.lock:
-            if topic in self.subscribers:
-                for callback in self.subscribers[topic]:
-                    try:
-                        callback(payload)
-                    except: pass
+            callbacks = list(self.subscribers.get(topic, []))
+        for callback in callbacks:
+            try:
+                callback(payload)
+            except Exception as e:
+                print(f"[NeuralHub] callback error on topic '{topic}': {e}")
 
 class EvolutionSandbox(threading.Thread):
     """Isolated evolution thread for parallel architectural exploration."""
@@ -2677,4 +2678,3 @@ The system has been autonomously evolving. Check `app.log` for granular event de
             
             activity[mod] = min(1.0, base + event_bonus)
         return activity
-
