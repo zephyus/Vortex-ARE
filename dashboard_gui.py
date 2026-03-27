@@ -302,11 +302,14 @@ class EvolutionDashboard(ctk.CTk):
         self.revenue_status = ctk.CTkLabel(self.navigation_frame, text="0 / 10000 NTD", font=ctk.CTkFont(size=12, weight="bold"), text_color="#FFFFFF")
         self.revenue_status.grid(row=51, column=0, pady=5)
         
+        self.forge_btn = ctk.CTkButton(self.navigation_frame, text="💰 FORGE NOW", command=self.trigger_revenue_forge, fg_color="#00FFAA", text_color="#000000", hover_color="#00CC88")
+        self.forge_btn.grid(row=52, column=0, padx=10, pady=5)
+        
         self.breakdown_label = ctk.CTkLabel(self.navigation_frame, text="Code Breakdown", font=ctk.CTkFont(size=12, weight="bold"))
-        self.breakdown_label.grid(row=52, column=0, pady=(20, 5))
+        self.breakdown_label.grid(row=53, column=0, pady=(20, 5))
         
         self.breakdown_text = ctk.CTkLabel(self.navigation_frame, text="", font=ctk.CTkFont(size=10), justify="left")
-        self.breakdown_text.grid(row=53, column=0, padx=10)
+        self.breakdown_text.grid(row=54, column=0, padx=10)
 
     def setup_main_area(self):
         self.main_frame = ctk.CTkFrame(self, corner_radius=10)
@@ -2018,3 +2021,18 @@ Enabled 24/7 autonomous project development.
             self.heartbeat_label.configure(text="💓 PULSE: THROTTLED", text_color="#FF4400")
         else:
             self.heartbeat_label.configure(text="💓 PULSE: NOMINAL", text_color="#00FFAA")
+
+    def trigger_revenue_forge(self):
+        if hasattr(self.engine, "revenue"):
+            ai_worker = getattr(self.engine, 'ai_worker', None)
+            if ai_worker and ai_worker.is_ready:
+                self.add_log_to_ui("🚀 Manual Forge Triggered: Synchronizing with LLMs...")
+                def run_forge():
+                    title, val = self.engine.revenue.generate_micro_saas_product(ai_worker=ai_worker)
+                    self.after(0, lambda: self.add_log_to_ui(f"💰 FORGED: '{title}' (Est. Value: {val} NTD)"))
+                
+                import threading
+                threading.Thread(target=run_forge, daemon=True).start()
+            else:
+                self.add_log_to_ui("⚠️ LLM Bridge not ready. Please wait.")
+
