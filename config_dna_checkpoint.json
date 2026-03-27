@@ -1,0 +1,66 @@
+{
+    "appearance_mode": "dark",
+    "color_theme": "blue",
+    "window_size": "900x600",
+    "personality": "Safety",
+    "node_positions": {
+        "auto_runner": [
+            435.755966015518,
+            288.13784000519274
+        ],
+        "dashboard_gui": [
+            537.7258119683912,
+            343.2529202701023
+        ],
+        "main_app": [
+            635.2032867286414,
+            520.4375743889107
+        ],
+        "system_engine": [
+            433.1764299262862,
+            370.9447720958903
+        ],
+        "test_engine_logic": [
+            524.8105736084639,
+            192.21699661487534
+        ],
+        "verify_v25": [
+            679.044868997909,
+            320.5726985631372
+        ],
+        "verify_v26": [
+            361.1594499023619,
+            492.78574785280836
+        ],
+        "verify_v27": [
+            493.67371087583354,
+            536.5171587602732
+        ]
+    },
+    "metabolic_interval": 4.0,
+    "telemetry_secret": "SYSTEM_CORE_BETA_2026",
+    "iteration": 189,
+    "semantic_memory": {
+        "LOGIC": {
+            "success": 3,
+            "fail": 0
+        },
+        "UI": {
+            "success": 0,
+            "fail": 3
+        },
+        "OPTIMIZATION": {
+            "success": 0,
+            "fail": 0
+        },
+        "SAFETY": {
+            "success": 0,
+            "fail": 0
+        },
+        "EXPERIMENTAL": {
+            "success": 0,
+            "fail": 0
+        }
+    },
+    "last_winner_tag": "LOGIC"
+}

@@ -1,0 +1,26 @@
+# Antigravity .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+
+# Browser Profiles (CRITICAL: contain session data)
+browser_profiles/
+
+# State & Logs
+revenue_state.json
+performance.csv
+roadmap.json
+*.log
+*.png
+*.webp
+snapshots/
+
+# OS
+.DS_Store
+thumbs.db
