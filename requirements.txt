@@ -1,0 +1,7 @@
+playwright
+customtkinter
+psutil
+requests
+keyboard
+pyperclip
+pillow
